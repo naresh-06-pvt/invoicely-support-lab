@@ -3,7 +3,7 @@
 - **Name:** Naresh Babu M
 - **Date submitted:** 13 November 2026 (update if you submit on a later day)
 - **Repository link:** https://github.com/naresh-06-pvt/invoicely-support-lab
-- **Total time spent (real time):** <!-- TODO: fill in from your own time log below -->
+- **Total time spent (real time):** about 2 hours 50 minutes on Friday 13 Nov 2026 (20:00 to 22:50 IST), see the time log at the end. The brief expected 6–8 hours; it was shorter because an AI tool did most of the typing and analysis (see the AI usage disclosure).
 
 > Replies below are drafts written on the **exercise clock** (Monday 16 November 2026, Asia/Dubai). The "time" columns in the investigation logs are exercise-clock times; the raw timestamps inside `evidence/` come from my lab containers (13 Nov 2026, UTC) because I reproduced everything on my laptop. Nothing was sent to anyone.
 
@@ -574,29 +574,41 @@ The order I worked was **2 → 1 → 4 → 3 → 5**.
 
 - Start with a baseline and a quick sweep of the Grafana dashboard for all five before diving in.
 - Use scripts from the start; my early shell quoting through PowerShell/WSL wasted time.
-- Take Grafana screenshots for the evidence; this write-up uses logs, SQL and Prometheus query output instead of screenshots (**TODO (Naresh): add screenshots of the Grafana dashboard for incidents 2 and 4 if you can**).
+- Take Grafana screenshots for the evidence. I did not take any; this write-up uses logs, SQL and Prometheus query output instead of screenshots.
 - Check the kernel log for OOM kills at the very start of any restart alert; Docker's `OOMKilled` flag was false here.
 - Ask L2 for a second opinion on the P1 raise of Incident 4.
 
 ### What I learned / what I would need to learn
 
-<!-- TODO (Naresh): replace or extend this section with what YOU actually learned and how. The points below are what the investigation showed; keep only what is true for you. -->
+I am a fresher, and most of this was new to me.
 
-- How UAE e-invoicing works at a high level (PINT AE over Peppol, the 5-corner model, ASP, TRN, ASP rules like BR-CO-15).
-- Reading a Grafana/Prometheus/Loki setup and Docker memory limits; kernel OOM kills versus the Docker flag.
-- Reading Go service code to find a root cause (missing HTTP 429 case; unrounded total; cache without eviction).
-- What I'd study next: Peppol/PINT AE rules in more detail, Go profiling (pprof), and writing good SQL for incident analysis.
+**Things I did myself and learned from doing them**
+- Installing WSL 2 and Ubuntu on Windows, installing Docker Desktop and turning on the WSL integration, and running my first container (`hello-world`).
+- What `make up` does: it builds and starts nine containers (portal, API, fake ASP, database, Grafana, Prometheus, Loki and others) with Docker Compose.
+- Using Git properly for the first time: setting a remote, committing, merging the README GitHub created, logging in with the GitHub CLI and pushing.
+
+**Things I learned from reading the results (an AI tool explained them to me; I am still practising saying them in my own words)**
+- How UAE e-invoicing works at a basic level: invoices go to an Accredited Service Provider (ASP) over the Peppol network.
+- A "429" reply means "slow down, try again later", and the system must handle it. Here it didn't, so invoices got stuck in "Submitted".
+- A program can be killed for using too much memory even when it shows no error. The kernel log showed it, while Docker's own flag said no.
+- Money totals must be rounded the same way everywhere, otherwise they are off by a cent and the ASP rejects the invoice.
+- Not every complaint is a bug: the Ghaf Café date problem was the product working as documented, so the right thing was to explain it, not escalate.
+
+**What I would study next:** Peppol/PINT AE rules, how Grafana and Prometheus queries work, basic Go, and SQL for investigating incidents.
 
 ### Time log (real time)
 
-<!-- TODO (Naresh): fill in your real dates and times. I can't know them. -->
+Times are approximate (IST), reconstructed from file and commit timestamps on my laptop.
 
 | Date | From–to | What I worked on |
 |---|---|---|
-| | | Setup: WSL 2, Docker Desktop, cloning the lab, `make up` |
-| | | Reading docs and code |
-| | | Investigating incidents 2, 1, 4, 3, 5 |
-| | | Writing SUBMISSION.md, reviewing evidence |
+| Fri 13 Nov 2026 | 20:00–20:30 | Read the assignment files; installed WSL 2 and Ubuntu |
+| Fri 13 Nov 2026 | 20:30–21:10 | Installed Docker Desktop, turned on WSL integration, tested `hello-world` |
+| Fri 13 Nov 2026 | 21:10–21:45 | Cloned the lab, ran `make up` (first build took several minutes), read the inbox and docs |
+| Fri 13 Nov 2026 | 21:45–22:35 | Reproduced the incidents with `make load`, uploads and database queries; collected the evidence; wrote `SUBMISSION.md` |
+| Fri 13 Nov 2026 | 22:35–22:50 | Created the GitHub repo, logged in with the GitHub CLI, pushed |
+
+Total: about 2 hours 50 minutes.
 
 ### AI usage disclosure
 
@@ -604,4 +616,4 @@ I used **Claude Code (Anthropic, model Claude Sonnet 5.5)** for most of the tech
 
 How the output was checked: every root cause above is backed by output captured from the running lab (in `evidence/`), not just by the AI's reading of the code. Two points where the AI's first theory needed correcting by the system: Docker reported `OOMKilled=false`, and only the kernel log showed the OOM kills; and an early test re-upload for Sahara looked like duplicates but was an artefact of the replay tool, so I did not use it as evidence.
 
-<!-- TODO (Naresh): add a sentence on what YOU personally reviewed or re-ran, e.g. "I re-ran make replay CUSTOMER=al-noor and compared the totals myself." Only write what you actually did. -->
+What I did myself: I installed WSL, Docker and the GitHub CLI, started the lab, and pushed this repo. What I did **not** do: I did not run the incident investigations myself; the AI tool ran them and I read its summaries. I have not yet re-run any reproduction on my own, and I am still learning to explain each root cause without notes.
