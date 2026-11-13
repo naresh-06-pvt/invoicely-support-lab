@@ -1,8 +1,8 @@
 # Submission
 
-- **Name:** Naresh  <!-- TODO (Naresh): add your full name -->
-- **Date submitted:** <!-- TODO: date you submit -->
-- **Repository link:** <!-- TODO: your GitHub repo URL -->
+- **Name:** Naresh Babu M
+- **Date submitted:** 13 November 2026 (update if you submit on a later day)
+- **Repository link:** https://github.com/naresh-06-pvt/invoicely-support-lab
 - **Total time spent (real time):** <!-- TODO: fill in from your own time log below -->
 
 > Replies below are drafts written on the **exercise clock** (Monday 16 November 2026, Asia/Dubai). The "time" columns in the investigation logs are exercise-clock times; the raw timestamps inside `evidence/` come from my lab containers (13 Nov 2026, UTC) because I reproduced everything on my laptop. Nothing was sent to anyone.
