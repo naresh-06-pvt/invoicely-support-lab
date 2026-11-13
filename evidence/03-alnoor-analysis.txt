@@ -1,0 +1,21 @@
+## Al Noor: today's import, status per invoice with portal totals
+   invoice_number   |  status  |   net    |  vat   | gross_stored | net_plus_vat | diff  
+--------------------+----------+----------+--------+--------------+--------------+-------
+ ANF-2611-0041-G83B | Accepted | 13749.75 | 687.49 |     14437.24 |     14437.24 |  0.00
+ ANF-2611-0042-G83B | Rejected | 14307.08 | 715.35 |     15022.42 |     15022.43 | -0.01
+ ANF-2611-0043-G83B | Accepted | 18684.00 | 934.20 |     19618.20 |     19618.20 |  0.00
+ ANF-2611-0044-G83B | Rejected | 11254.84 | 562.75 |     11817.57 |     11817.59 | -0.02
+ ANF-2611-0045-G83B | Accepted | 11283.30 | 564.17 |     11847.47 |     11847.47 |  0.00
+ ANF-2611-0046-G83B | Rejected |  5343.80 | 267.20 |      5610.99 |      5611.00 | -0.01
+(6 rows)
+
+## ASP rejection text for a rejected one
+ANF-2611-0044-G83B -> [{"row": 0, "rule": "BR-CO-15", "field": "", "message": "Invoice total amount with VAT (IBT-112) must equal Invoice total amount without VAT (IBT-109) + Invoice total VAT amount (IBT-110). Got 11817.57, expected 11817.59."}]
+## Per-line arithmetic of every Al Noor invoice from the latest import (payload sent to ASP)
+invoice          lines    sum net   sum vat    net+vat  sent gross   diff  qty x price (3dp price)
+ANF-2611-0041-G83B     1   13749.75    687.49   14437.24    14437.24   0.00  4850x2.835=13749.75000->13749.75
+ANF-2611-0042-G83B     3   14307.08    715.35   15022.43    15022.42  -0.01  3125x2.917=9115.62500->9115.63; 1837x2.585=4748.64500->4748.65
+ANF-2611-0043-G83B     2   18684.00    934.20   19618.20    19618.20   0.00  6200x2.835=17577.00000->17577; 60x18.45=1107.00000->1107
+ANF-2611-0044-G83B     4   11254.84    562.75   11817.59    11817.57  -0.02  2275x2.917=6636.17500->6636.18; 1365x2.585=3528.52500->3528.53
+ANF-2611-0045-G83B     1   11283.30    564.17   11847.47    11847.47   0.00  3980x2.835=11283.30000->11283.3
+ANF-2611-0046-G83B     2    5343.80    267.20    5611.00     5610.99  -0.01  1512x2.917=4410.50400->4410.5; 732x1.275=933.30000->933.3

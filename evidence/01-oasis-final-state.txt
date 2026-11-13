@@ -1,0 +1,31 @@
+## Oasis November invoice numbers (no suffix = the three uploads I replayed through the portal): final state per import
+ invoice_number |                   history                   | accepted_times 
+----------------+---------------------------------------------+----------------
+ OBS-2611-001   | 83d5:Accepted  19a0:Rejected  c266:Rejected |              1
+ OBS-2611-002   | 83d5:Accepted  19a0:Rejected  c266:Rejected |              1
+ OBS-2611-003   | 83d5:Accepted  19a0:Rejected  c266:Rejected |              1
+ OBS-2611-004   | 83d5:Accepted  19a0:Rejected  c266:Rejected |              1
+ OBS-2611-005   | 83d5:Rejected  19a0:Rejected  c266:Accepted |              1
+ OBS-2611-006   | 83d5:Rejected  19a0:Rejected  c266:Accepted |              1
+ OBS-2611-007   | 83d5:Rejected  19a0:Rejected  c266:Accepted |              1
+ OBS-2611-008   | 83d5:Rejected  19a0:Rejected  c266:Accepted |              1
+(8 rows)
+
+## ASP side: documents received from Oasis with those numbers (accepted vs rejected)
+  ('OBS-2611-001', 'accepted') 1
+  ('OBS-2611-002', 'accepted') 1
+  ('OBS-2611-003', 'accepted') 1
+  ('OBS-2611-004', 'accepted') 1
+  ('OBS-2611-005', 'accepted') 1
+  ('OBS-2611-006', 'accepted') 1
+  ('OBS-2611-007', 'accepted') 1
+  ('OBS-2611-008', 'accepted') 1
+  total docs from Oasis at ASP: 16
+## the three imports
+    id    |  status   | duration_ms | created_at 
+----------+-----------+-------------+------------
+ 83d51ac7 | Completed |      121572 | 16:16:22
+ 19a07eae | Completed |      121640 | 16:17:27
+ c26605d8 | Completed |      121622 | 16:18:32
+(3 rows)
+

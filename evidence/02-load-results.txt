@@ -1,0 +1,147 @@
+## make load output
+[16:21:11] oasis        uploading oasis-builders-nov-2026.xlsx (169 KB)
+[16:21:13] ghaf         HTTP 201 in 1.7s  import=b640b8a5-9cbf-4abf-8d22-14ca3e0a39ed  status=Completed  invoices=4
+[16:21:14] al-noor      HTTP 201 in 2.8s  import=edfa83cb-dc6e-4fc5-a29c-1317249f6e67  status=Completed  invoices=6
+[16:21:21] ghaf         invoices: Rejected 4
+[16:21:22] al-noor      invoices: Accepted 3, Rejected 3
+[16:21:24] sahara       HTTP 201 in 13.0s  import=82e6a287-e741-4846-902c-1920bf60a7e8  status=Completed  invoices=40
+[16:21:32] sahara       invoices: Submitted 32, Accepted 8
+[16:23:13] oasis        HTTP 201 in 121.7s  import=cb4d5d7a-6df8-4778-b6a3-53e101c2952e  status=Completed  invoices=8
+[16:23:21] oasis        invoices: Accepted 8
+[16:23:21] peak       240 uploads from 4 customers, 8 at a time
+[16:23:31] peak       25/240 uploads done (25 ok, 0 failed)
+[16:23:39] peak       50/240 uploads done (50 ok, 0 failed)
+[16:23:49] peak       75/240 uploads done (66 ok, 9 failed)
+[16:23:57] peak       100/240 uploads done (91 ok, 9 failed)
+[16:24:05] peak       125/240 uploads done (116 ok, 9 failed)
+[16:24:10] peak       150/240 uploads done (136 ok, 14 failed)
+[16:24:20] peak       175/240 uploads done (150 ok, 25 failed)
+[16:24:27] peak       200/240 uploads done (175 ok, 25 failed)
+[16:24:35] peak       225/240 uploads done (200 ok, 25 failed)
+[16:24:40] peak       finished: 215 ok, 25 failed
+[16:24:40] peak         15 x Post "http://api:8080/v1/imports": EOF
+[16:24:40] peak          3 x Post "http://api:8080/v1/imports": dial tcp 172.18.0.9:8080: connect: connection
+[16:24:40] peak          7 x Post "http://api:8080/v1/imports": dial tcp: lookup api on 127.0.0.11:53: no suc
+[16:24:55] summary    imports since start: map[Completed:221 Processing:15]
+[16:24:55] summary    invoices: Parsed 67, Validated 11, Submitted 726, Accepted 619, Rejected 11
+
+## sampler (every ~6s): api memory + restart count
+16:20:47 44.92MiB / 128MiB restarts=0 oom=false exit=0
+16:20:53 45.01MiB / 128MiB restarts=0 oom=false exit=0
+16:21:00 45.28MiB / 128MiB restarts=0 oom=false exit=0
+16:21:06 44.51MiB / 128MiB restarts=0 oom=false exit=0
+16:21:12 56.24MiB / 128MiB restarts=0 oom=false exit=0
+16:21:18 57.69MiB / 128MiB restarts=0 oom=false exit=0
+16:21:24 57.77MiB / 128MiB restarts=0 oom=false exit=0
+16:21:30 57.36MiB / 128MiB restarts=0 oom=false exit=0
+16:21:37 59.03MiB / 128MiB restarts=0 oom=false exit=0
+16:21:43 58.81MiB / 128MiB restarts=0 oom=false exit=0
+16:21:49 58.82MiB / 128MiB restarts=0 oom=false exit=0
+16:21:55 59.34MiB / 128MiB restarts=0 oom=false exit=0
+16:22:01 58.05MiB / 128MiB restarts=0 oom=false exit=0
+16:22:07 58.91MiB / 128MiB restarts=0 oom=false exit=0
+16:22:13 59.49MiB / 128MiB restarts=0 oom=false exit=0
+16:22:19 59.6MiB / 128MiB restarts=0 oom=false exit=0
+16:22:25 60.23MiB / 128MiB restarts=0 oom=false exit=0
+16:22:32 59.96MiB / 128MiB restarts=0 oom=false exit=0
+16:22:38 59.6MiB / 128MiB restarts=0 oom=false exit=0
+16:22:44 60.2MiB / 128MiB restarts=0 oom=false exit=0
+16:22:50 59.95MiB / 128MiB restarts=0 oom=false exit=0
+16:22:56 60.57MiB / 128MiB restarts=0 oom=false exit=0
+16:23:02 60.15MiB / 128MiB restarts=0 oom=false exit=0
+16:23:08 60.46MiB / 128MiB restarts=0 oom=false exit=0
+16:23:14 60.24MiB / 128MiB restarts=0 oom=false exit=0
+16:23:20 66.84MiB / 128MiB restarts=0 oom=false exit=0
+16:23:27 81MiB / 128MiB restarts=0 oom=false exit=0
+16:23:33 108.2MiB / 128MiB restarts=0 oom=false exit=0
+16:23:39 7.004MiB / 128MiB restarts=1 oom=false exit=0
+16:23:45 28.84MiB / 128MiB restarts=1 oom=false exit=0
+16:23:51 55.35MiB / 128MiB restarts=1 oom=false exit=0
+16:23:57 76.05MiB / 128MiB restarts=1 oom=false exit=0
+16:24:03 102.4MiB / 128MiB restarts=1 oom=false exit=0
+16:24:09 5.281MiB / 128MiB restarts=2 oom=false exit=0
+16:24:16 23.07MiB / 128MiB restarts=2 oom=false exit=0
+16:24:22 60.2MiB / 128MiB restarts=2 oom=false exit=0
+16:24:28 79.24MiB / 128MiB restarts=2 oom=false exit=0
+16:24:34 105.1MiB / 128MiB restarts=2 oom=false exit=0
+16:24:40 122.8MiB / 128MiB restarts=2 oom=false exit=0
+16:24:46 122.2MiB / 128MiB restarts=2 oom=false exit=0
+16:24:52 122.6MiB / 128MiB restarts=2 oom=false exit=0
+16:24:58 125.8MiB / 128MiB restarts=2 oom=false exit=0
+16:25:04 7.266MiB / 128MiB restarts=3 oom=false exit=0
+16:25:11 6.801MiB / 128MiB restarts=3 oom=false exit=0
+16:25:17 8.301MiB / 128MiB restarts=3 oom=false exit=0
+16:25:23 8.496MiB / 128MiB restarts=3 oom=false exit=0
+16:25:29 9.738MiB / 128MiB restarts=3 oom=false exit=0
+16:25:35 9.594MiB / 128MiB restarts=3 oom=false exit=0
+16:25:41 10.03MiB / 128MiB restarts=3 oom=false exit=0
+16:25:47 10.12MiB / 128MiB restarts=3 oom=false exit=0
+16:25:53 11.88MiB / 128MiB restarts=3 oom=false exit=0
+16:25:59 10.79MiB / 128MiB restarts=3 oom=false exit=0
+16:26:06 11.12MiB / 128MiB restarts=3 oom=false exit=0
+16:26:12 11.13MiB / 128MiB restarts=3 oom=false exit=0
+16:26:18 11.9MiB / 128MiB restarts=3 oom=false exit=0
+16:26:24 12.41MiB / 128MiB restarts=3 oom=false exit=0
+16:26:30 12.03MiB / 128MiB restarts=3 oom=false exit=0
+16:26:36 12.05MiB / 128MiB restarts=3 oom=false exit=0
+16:26:42 12.73MiB / 128MiB restarts=3 oom=false exit=0
+16:26:48 13.68MiB / 128MiB restarts=3 oom=false exit=0
+
+## container state now
+api: restarts=3 oom=false exit=0 started=2026-11-13T16:25:01.927413597Z
+asp-mock: restarts=0 oom=false started=2026-11-13T16:15:14.313474365Z
+
+## api log: startups
+api-1  | {"time":"2026-11-13T16:15:21.664152594Z","level":"INFO","msg":"api starting","addr":":8080","asp_url":"http://asp-mock:8090"}
+api-1  | {"time":"2026-11-13T16:15:21.68624074Z","level":"INFO","msg":"submission workers started","workers":4}
+api-1  | {"time":"2026-11-13T16:23:40.436626636Z","level":"INFO","msg":"api starting","addr":":8080","asp_url":"http://asp-mock:8090"}
+api-1  | {"time":"2026-11-13T16:23:40.45242056Z","level":"INFO","msg":"submission workers started","workers":4}
+api-1  | {"time":"2026-11-13T16:24:10.989578791Z","level":"INFO","msg":"api starting","addr":":8080","asp_url":"http://asp-mock:8090"}
+api-1  | {"time":"2026-11-13T16:24:11.002413364Z","level":"INFO","msg":"submission workers started","workers":4}
+api-1  | {"time":"2026-11-13T16:25:02.119223737Z","level":"INFO","msg":"api starting","addr":":8080","asp_url":"http://asp-mock:8090"}
+api-1  | {"time":"2026-11-13T16:25:02.132920165Z","level":"INFO","msg":"submission workers started","workers":4}
+
+## invoices by seller/status
+             name              |  status   | count 
+-------------------------------+-----------+-------
+ Al Noor Fuel & Lubricants LLC | Accepted  |     7
+ Al Noor Fuel & Lubricants LLC | Rejected  |     3
+ Desert Rose Trading LLC       | Accepted  |   159
+ Desert Rose Trading LLC       | Parsed    |    16
+ Desert Rose Trading LLC       | Submitted |   170
+ Desert Rose Trading LLC       | Validated |     2
+ Ghaf Tree Café LLC            | Accepted  |     4
+ Ghaf Tree Café LLC            | Rejected  |     8
+ Marina Bay Hospitality LLC    | Accepted  |   147
+ Marina Bay Hospitality LLC    | Parsed    |    20
+ Marina Bay Hospitality LLC    | Submitted |   171
+ Marina Bay Hospitality LLC    | Validated |     4
+ Oasis Builders Supply LLC     | Accepted  |    24
+ Oasis Builders Supply LLC     | Rejected  |    16
+ Palm Coast Electronics LLC    | Accepted  |   158
+ Palm Coast Electronics LLC    | Parsed    |    15
+ Palm Coast Electronics LLC    | Submitted |   171
+ Palm Coast Electronics LLC    | Validated |     3
+ Sahara Medical Supplies FZE   | Accepted  |    20
+ Sahara Medical Supplies FZE   | Submitted |    32
+ Zayed Port Logistics LLC      | Accepted  |   148
+ Zayed Port Logistics LLC      | Parsed    |    16
+ Zayed Port Logistics LLC      | Submitted |   182
+ Zayed Port Logistics LLC      | Validated |     2
+(24 rows)
+
+## stuck Validated older than 5 min
+ name | count | min 
+------+-------+-----
+(0 rows)
+
+## stuck Submitted
+            name             | count |              min              
+-----------------------------+-------+-------------------------------
+ Palm Coast Electronics LLC  |   171 | 2026-11-13 16:23:24.405188+00
+ Sahara Medical Supplies FZE |    32 | 2026-11-13 16:21:24.740067+00
+ Zayed Port Logistics LLC    |   182 | 2026-11-13 16:23:24.500891+00
+ Marina Bay Hospitality LLC  |   171 | 2026-11-13 16:23:24.369866+00
+ Desert Rose Trading LLC     |   170 | 2026-11-13 16:23:24.270934+00
+(5 rows)
+

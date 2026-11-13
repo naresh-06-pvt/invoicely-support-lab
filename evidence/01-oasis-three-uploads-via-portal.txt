@@ -1,0 +1,11 @@
+Oasis November file uploaded 3 times in a row through the portal proxy (http://localhost:3000/api/imports, seller_id=2), 5 s apart.
+Transcribed from the terminal output of the run (the response bodies were overwritten by my loop, so only the last body is saved as 01-oasis-upload.json).
+
+upload 1: HTTP 504 in 60.017290s  {"error":"Gateway Timeout"}
+upload 2: HTTP 504 in 60.072161s  {"error":"Gateway Timeout"}
+upload 3: HTTP 504 in 60.010454s  {"error":"Gateway Timeout"}
+
+The api kept processing all three after the proxy gave up (see 01-oasis-api-logs.txt):
+  import 83d51ac7 completed duration_ms=121572
+  import 19a07eae completed duration_ms=121640
+  import c26605d8 completed duration_ms=121622

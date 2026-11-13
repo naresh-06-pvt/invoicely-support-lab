@@ -1,0 +1,41 @@
+## docker events for api container (oom / die / restart) since start
+
+## last api log lines before 1st restart (16:23:30-16:23:41)
+{"time":"2026-11-13T16:23:39.961845769Z","level":"INFO","msg":"asp response","invoice_id":"0d1a9f3b-c426-46e4-ab54-d368df980bd5","invoice_number":"ZPL-1116-G83B-056-05","status_code":429,"duration_ms":0}
+{"time":"2026-11-13T16:23:39.963337274Z","level":"INFO","msg":"asp response","invoice_id":"fd82b1bb-7739-4e08-94e8-7511a744e9ad","invoice_number":"ZPL-1116-G83B-056-06","status_code":429,"duration_ms":0}
+{"time":"2026-11-13T16:23:40.005092477Z","level":"INFO","msg":"import received","import_id":"cd0b7dc9-6a17-42a1-b6b6-ffb540b057bc","seller_id":7,"filename":"pce-morning-63.xlsx","bytes":95807}
+{"time":"2026-11-13T16:23:40.436626636Z","level":"INFO","msg":"api starting","addr":":8080","asp_url":"http://asp-mock:8090"}
+{"time":"2026-11-13T16:23:40.45242056Z","level":"INFO","msg":"submission workers started","workers":4}
+{"time":"2026-11-13T16:23:40.453039297Z","level":"INFO","msg":"api listening","addr":":8080"}
+
+## eviction of SourceCache anywhere in code?
+services/api/internal/httpapi/httpapi.go:197:	src, ok := s.sources.Get(r.PathValue("id"))
+services/api/internal/httpapi/httpapi.go:211:	src, ok := s.sources.Get(r.PathValue("id"))
+services/api/internal/importer/sources.go:34:	c.entries[importID] = s
+services/api/internal/importer/sources.go:41:	s, ok := c.entries[importID]
+services/api/internal/importer/importer.go:95:	im.sources.Put(id, &Source{Filename: filename, Raw: data, Workbook: wb, Invoices: invoices})
+no delete() in sources.go -> entries are never removed
+
+## web proxy 502/504 count
+0
+3
+
+## imports left Processing (killed mid-way)
+   status   | count 
+------------+-------
+ Processing |    15
+ Completed  |   230
+(2 rows)
+
+## invoices left in Parsed (never validated) per seller
+            name            | count 
+----------------------------+-------
+ Zayed Port Logistics LLC   |    16
+ Marina Bay Hospitality LLC |    20
+ Desert Rose Trading LLC    |    16
+ Palm Coast Electronics LLC |    15
+(4 rows)
+
+## asp responses by code (api view)
+## asp 429 count + asp-mock restarts
+726

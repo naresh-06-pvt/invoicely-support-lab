@@ -1,0 +1,16 @@
+Prometheus queries run at 2026-11-13T16:28:53Z (container time)
+### max_over_time(container_memory_working_set_bytes{container_label_com_docker_compose_service="api"}[40m])/1024/1024
+### container_memory_working_set_bytes{container_label_com_docker_compose_service="api"}/1024/1024
+### changes(container_start_time_seconds{container_label_com_docker_compose_service="api"}[40m])
+### sum by (code) (invoicely_asp_responses_total)
+  {'code': '200'} 8
+  {'code': '429'} 32
+### asp_documents_total
+  {'__name__': 'asp_documents_total', 'instance': 'asp-mock:8090', 'job': 'asp-mock', 'outcome': 'accepted'} 640
+  {'__name__': 'asp_documents_total', 'instance': 'asp-mock:8090', 'job': 'asp-mock', 'outcome': 'rejected'} 3
+  {'__name__': 'asp_documents_total', 'instance': 'asp-mock:8090', 'job': 'asp-mock', 'outcome': 'throttled'} 758
+### histogram_quantile(0.95, sum by (le) (rate(invoicely_import_duration_seconds_bucket[40m])))
+  {} 4.809426229508196
+### invoicely_participant_lookup_duration_seconds_sum{result="registered"} / invoicely_participant_lookup_duration_seconds_count{result="registered"}
+  {'instance': 'api:8080', 'job': 'api', 'result': 'registered'} 0.2025180204333333
+### invoicely_queue_depth

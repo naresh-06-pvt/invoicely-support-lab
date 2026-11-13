@@ -1,0 +1,42 @@
+### 1) ORIGINAL file as the customer sent it
+import status: Completed | invoices: 4 | counts: {'Rejected': 4}
+  GTC-118 Rejected portal errors: 4
+  GTC-119 Rejected portal errors: 4
+  GTC-120 Rejected portal errors: 6
+  GTC-121 Rejected portal errors: 2
+
+### error detail of first invoice
+[
+ {
+  "row": 2,
+  "rule": "AE-BR-04",
+  "field": "Invoice issue date*",
+  "message": "[Invoice issue date*] must be a date in YYYY-MM-DD format (got '13/11/2026')."
+ },
+ {
+  "row": 2,
+  "rule": "AE-BR-04",
+  "field": "Payment due date*",
+  "message": "[Payment due date*] must be a date in YYYY-MM-DD format (got '13/12/2026')."
+ },
+ {
+  "row": 3,
+  "rule": "AE-BR-04",
+  "field": "Invoice issue date*",
+  "message": "[Invoice issue date*] must be a date in YYYY-MM-DD format (got '13/11/2026')."
+ },
+ {
+  "row": 3,
+  "rule": "AE-BR-04",
+  "field": "Payment due date*",
+  "message": "[Payment due date*] must be a date in YYYY-MM-DD format (got '13/12/2026')."
+ }
+]
+
+### 2) same file with ONLY the dates changed to YYYY-MM-DD
+converted 16 date cells dd/mm/yyyy -> yyyy-mm-dd
+import status: Completed | invoices: 4 | counts: {'Validated': 4}
+  GTC-118 Validated  errors: 0
+  GTC-119 Validated  errors: 0
+  GTC-120 Validated  errors: 0
+  GTC-121 Validated  errors: 0

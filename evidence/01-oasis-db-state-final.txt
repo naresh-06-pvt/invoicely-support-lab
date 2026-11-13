@@ -1,0 +1,38 @@
+## imports (final)
+    id    |   status   | duration_ms | started  
+----------+------------+-------------+----------
+ 0c6f3a52 | Completed  |        5400 | 07:40:00
+ 83d51ac7 | Completed  |      121572 | 16:16:22
+ 19a07eae | Completed  |      121640 | 16:17:27
+ c26605d8 | Processing |             | 16:18:32
+(4 rows)
+
+## each invoice number: status per import (Nov file only)
+ invoice_number |                   history                    
+----------------+----------------------------------------------
+ OBS-2611-001   | 83d5:Accepted  19a0:Rejected  c266:Rejected
+ OBS-2611-002   | 83d5:Accepted  19a0:Rejected  c266:Rejected
+ OBS-2611-003   | 83d5:Accepted  19a0:Rejected  c266:Rejected
+ OBS-2611-004   | 83d5:Accepted  19a0:Rejected  c266:Rejected
+ OBS-2611-005   | 83d5:Rejected  19a0:Rejected  c266:Validated
+ OBS-2611-006   | 83d5:Rejected  19a0:Rejected  c266:Validated
+ OBS-2611-007   | 83d5:Rejected  19a0:Rejected  c266:Parsed
+ OBS-2611-008   | 83d5:Rejected  19a0:Rejected  c266:Parsed
+(8 rows)
+
+## the AE-BR-09 messages
+ invoice_number | imp  | rejected_by |                                                                               left                                                                               
+----------------+------+-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ OBS-2611-006   | 83d5 | portal      | [{"row": 377, "rule": "AE-BR-09", "field": "Invoice number*", "message": "Document number 'OBS-2611-006' already exists for this seller with status 'Parsed'."}]
+ OBS-2611-007   | 83d5 | portal      | [{"row": 452, "rule": "AE-BR-09", "field": "Invoice number*", "message": "Document number 'OBS-2611-007' already exists for this seller with status 'Parsed'."}]
+ OBS-2611-008   | 83d5 | portal      | [{"row": 527, "rule": "AE-BR-09", "field": "Invoice number*", "message": "Document number 'OBS-2611-008' already exists for this seller with status 'Parsed'."}]
+ OBS-2611-005   | 83d5 | portal      | [{"row": 302, "rule": "AE-BR-09", "field": "Invoice number*", "message": "Document number 'OBS-2611-005' already exists for this seller with status 'Parsed'."}]
+(4 rows)
+
+## timing of buyer lookups (prometheus avg)
+invoicely_participant_lookup_duration_seconds_sum{result="error"} 0
+invoicely_participant_lookup_duration_seconds_count{result="error"} 0
+invoicely_participant_lookup_duration_seconds_sum{result="not_registered"} 0
+invoicely_participant_lookup_duration_seconds_count{result="not_registered"} 0
+invoicely_participant_lookup_duration_seconds_sum{result="registered"} 343.3471246789996
+invoicely_participant_lookup_duration_seconds_count{result="registered"} 1698
